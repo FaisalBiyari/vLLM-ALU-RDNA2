@@ -8,9 +8,10 @@ kernels built in. Upstream vLLM does not ship working attention or
 small-M decode GEMMs for RDNA2 (W6800 / W6900X / V620 class GPUs).
 This repo does. Build it, run it, serve on it.
 
-**Validated:** 4× Radeon Pro W6800X (gfx1030), TP4, Ubuntu 26.04,
-Python 3.13.15, torch `2.13.0+rocm10.0.0`. Qwen3.8-27B fp16, 262k context,
-CUDA graphs, MTP, 40-way concurrency — all serving.
+**Validated:** Dual AMD Radeon PRO W6800X Duo MPX GPU Modules, 
+logically 4× Radeon Pro W6800X dies (gfx1030), with Infinity Fabric Link Bridge (IFLB),
+TP4, Ubuntu 26.04, Python 3.13.15, torch `2.13.0+rocm10.0.0`.
+Qwen3.8-27B fp16, 262,144 context, CUDA graphs, MTP, 40-way concurrency — all serving.
 
 ## What is different from upstream vLLM 0.30.0
 
