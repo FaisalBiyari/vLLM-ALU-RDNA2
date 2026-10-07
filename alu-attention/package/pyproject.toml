@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=61", "wheel", "torch"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "alu_attn"
+version = "0.6.3"
+description = "Linux/ROCm FlashAttention HIP kernels for RDNA2/gfx1030"
+requires-python = ">=3.11"
+classifiers = ["Operating System :: POSIX :: Linux"]
+dependencies = ["torch"]
+
+# API-compatible with flash-attn: the same functions, arguments, and results —
+# flash_attn_func, flash_attn_qkvpacked_func, flash_attn_kvpacked_func, flash_attn_varlen_func,
+# flash_attn_varlen_qkvpacked_func, flash_attn_varlen_kvpacked_func, flash_attn_with_kvcache,
+# flash_attn_combine, plus bert_padding, layers.rotary, modules.mha, and ops.triton.layer_norm.
+# FA-3 uses a different argument order; that interface lives in alu_attn.fa3_interface.
+# The project-specific component is the GPU implementation: HIP kernels for RDNA2 instead of CUDA.
+# The distribution version is sourced HERE, not from setup.py. A previous mismatch caused setup.py
+# to report 0.2.0 while the installed metadata still reported 0.1.0.

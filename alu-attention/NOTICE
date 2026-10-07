@@ -1,0 +1,25 @@
+ALU Attention
+
+Project lineage and attribution
+-------------------------------
+
+ALU Attention is based on kiss2's flash-attention-rdna2 project:
+
+    https://github.com/2kiss/flash-attention-rdna2
+
+That project is an Apache-2.0 FlashAttention implementation for AMD RDNA2
+(gfx1030). This distribution is a derivative of it and is likewise distributed
+under the Apache License 2.0. The original `Copyright 2026 2kiss` notice is
+retained in LICENSE.
+
+ALU Attention builds on that base: native GQA 3/6 decode for rank-local
+TP1/2/4/8 layouts, interleaved paged-KV row strides, current-stream execution
+without device-wide decode synchronization, CU-aware decode split planning,
+packed request indexing with request-local causal verification, caller-owned
+scratch buffers, an optional vLLM adapter, and a head_dim 512 forward/decode
+path. The adapter targets the Apache-2.0 vLLM v0.30.0 Triton backend contract:
+
+    https://github.com/vllm-project/vllm/tree/v0.30.0
+
+No target-hardware performance or correctness results are implied by this
+notice.
